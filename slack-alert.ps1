@@ -83,43 +83,6 @@ function Post-ToSlack
     } # End of process
 } # End of function
 
-
-
- 
-Try
-{
-
-# Writing log information in debug mode including parameters that were included in the call
-if ($debug -eq 1)
-{
- $time=Get-Date
- "$time New alert notification received " | Add-Content service-now.log
- "Script parameters " | Add-Content service-now.log    
- foreach ($key in $MyInvocation.BoundParameters.keys)
- {
-    $value = (get-variable $key).Value 
-    $keyheader = $key.ToString().ToUpper();
-    if (![string]::IsNullOrEmpty($value))
-    {
-        "$keyheader : $value" |   Add-Content service-now.log
-    }
- }
-}
-
-# In case of error writing exception details to log file
-Catch
-{
-    if ($debug -eq 1)
-    {
-           $ErrorMessage = $_.Exception.Message
-        $FailedItem = $_.Exception.ItemName
-           $time=Get-Date
-           "$time error
-           $ErrorMessage
-           $FailedItem" | Add-Content slack-alert.log
-    }
-} 
-
 #################
 # Configuration #
 #               #

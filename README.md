@@ -7,7 +7,7 @@ Inspired by the https://community.dynatrace.com/community/display/PUBDCRUM/Servi
 
 # How to:
 Configure a script alert
-
+Use the 
 
 
 # Licensing
