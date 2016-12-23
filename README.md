@@ -3,6 +3,12 @@ DCRUM Slack integration
 
 
 Borrowed the function from: https://github.com/WahlNetwork/powershell-scripts/
+Inspired by the https://community.dynatrace.com/community/display/PUBDCRUM/ServiceNow+Integration and used it as a wrapper
+
+# How to:
+Configure a script alert
+
+
 
 # Licensing
 

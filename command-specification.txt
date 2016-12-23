@@ -1,0 +1,1 @@
+-command "C:\PowerShellAlert\slack-alert.ps1 -dcrum_message '{notificationMessage}'"
