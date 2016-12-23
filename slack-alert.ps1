@@ -106,36 +106,6 @@ if ($debug -eq 1)
  }
 }
 
-# Getting first line of DCRUM description to be reported as SN message
-if ($dcrum_message.Length -gt 0)
-{
-    # if DCRUM message has multiple lines we take first line for ticket title
-    if ($dcrum_message.IndexOf("`n") -gt 0)
-    {            
-        $sn_message = $dcrum_message.Substring(0,$dcrum_message.IndexOf("`n"))
-    }
-    # else we take whole message
-    else
-    {        
-        $sn_message = $dcrum_message;
-    }
-}
-    
-
-# Preparing ServiceNow JSON structure for events
-$SN_json_text = @"
-{
-	'category': 'Network',
-	'impact': '3',
-	'urgency': '3',
-	'priority': '5',
-	'short_description': '',
-	'comments': '',
-	'u_dynatrace_dcrum_details': '',
-	'correlation_id' : ''
-}
-"@
-
 # In case of error writing exception details to log file
 Catch
 {
@@ -150,7 +120,10 @@ Catch
     }
 } 
 
-# Post the message to Slack
+#################
+# Configuration #
+#               #
+#################
 $channel = '#your-channel-here'
 $botname = 'Secret Ninja'
 $result = Post-ToSlack -Channel $channel -Message $dcrum_message -BotName $botname
